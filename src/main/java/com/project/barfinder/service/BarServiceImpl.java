@@ -2,7 +2,6 @@ package com.project.barfinder.service;
 
 import com.project.barfinder.domain.entities.Bar;
 import com.project.barfinder.domain.models.service.BarServiceModel;
-import com.project.barfinder.domain.models.service.BaseServiceModel;
 import com.project.barfinder.repository.BarRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,13 +55,23 @@ public class BarServiceImpl implements BarService {
 
     @Override
     public List<BarServiceModel> findByCategory(String category) {
-       List<BarServiceModel> serviceModels = new ArrayList<>();
-       List<Bar> barsFromDb = this.barRepository.findByCategory(category);
+        List<BarServiceModel> serviceModels = new ArrayList<>();
+        List<Bar> barsFromDb = this.barRepository.findByCategory(category);
         for (Bar bar : barsFromDb) {
-            BarServiceModel mappedServiceModel = this.modelMapper.map(bar,BarServiceModel.class);
+            BarServiceModel mappedServiceModel = this.modelMapper.map(bar, BarServiceModel.class);
             serviceModels.add(mappedServiceModel);
         }
         return serviceModels;
+    }
+
+    @Override
+    public BarServiceModel findByName(String name) {
+        return this.modelMapper.map(barRepository.findByName(name), BarServiceModel.class);
+    }
+
+    @Override
+    public BarServiceModel editBar(BarServiceModel barServiceModel) {
+        return this.modelMapper.map(barRepository.saveAndFlush(this.modelMapper.map(barServiceModel, Bar.class)), BarServiceModel.class);
     }
 
     @Override
