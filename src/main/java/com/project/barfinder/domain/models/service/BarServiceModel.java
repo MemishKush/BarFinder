@@ -11,9 +11,9 @@ public class BarServiceModel extends BaseServiceModel {
     private String address;
     private String phoneNumber;
     private List<ImageServiceModel> photos;
-    private String barCard;
     private String description;
     private String priceRange;
+    private String musicStyle;
     private List<Event> events;
     private List<ReservationServiceModel> reservations;
     private List<ReviewServiceModel> reviews;
@@ -62,14 +62,6 @@ public class BarServiceModel extends BaseServiceModel {
         this.photos = photos;
     }
 
-    public String getBarCard() {
-        return barCard;
-    }
-
-    public void setBarCard(String barCard) {
-        this.barCard = barCard;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -84,6 +76,14 @@ public class BarServiceModel extends BaseServiceModel {
 
     public void setPriceRange(String priceRange) {
         this.priceRange = priceRange;
+    }
+
+    public String getMusicStyle() {
+        return musicStyle;
+    }
+
+    public void setMusicStyle(String musicStyle) {
+        this.musicStyle = musicStyle;
     }
 
     public List<Event> getEvents() {

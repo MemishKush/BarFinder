@@ -11,9 +11,9 @@ public class Bar extends BaseEntity {
     private String address;
     private String phoneNumber;
     private List<Image> photos;
-    private String barCard;
     private String description;
     private String priceRange;
+    private String musicStyle;
     private List<Event> events;
     private List<Reservation> reservations;
     private List<Review> reviews;
@@ -67,15 +67,6 @@ public class Bar extends BaseEntity {
         this.photos = photos;
     }
 
-    @Column(name ="bar_card")
-    public String getBarCard() {
-        return barCard;
-    }
-
-    public void setBarCard(String barCard) {
-        this.barCard = barCard;
-    }
-
     @Column(name = "description",nullable = false)
     public String getDescription() {
         return description;
@@ -92,6 +83,15 @@ public class Bar extends BaseEntity {
 
     public void setPriceRange(String priceRange) {
         this.priceRange = priceRange;
+    }
+
+    @Column(name = "music_style",nullable = false)
+    public String getMusicStyle() {
+        return musicStyle;
+    }
+
+    public void setMusicStyle(String musicStyle) {
+        this.musicStyle = musicStyle;
     }
 
     @OneToMany(mappedBy = "bar")

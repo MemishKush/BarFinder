@@ -10,6 +10,8 @@ public interface BarService {
     List<BarServiceModel> findAllBars();
 
     BarServiceModel findById(String id);
+    List<BarServiceModel> findByMusicStyle(String musicStyle);
+    List<BarServiceModel> findByCategory(String category);
 
     void deleteBar(String id);
 }
