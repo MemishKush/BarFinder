@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "events")
 public class Event extends BaseEntity {
     private Bar bar;
-    private String title;
     private String startTime;
     private String endTime;
     private String description;
@@ -23,15 +22,6 @@ public class Event extends BaseEntity {
         this.bar = bar;
     }
 
-    @Column(name = "title", nullable = false)
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     @Column(nullable = false)
     public String getStartTime() {
         return startTime;
@@ -40,7 +30,6 @@ public class Event extends BaseEntity {
     public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
-
     @Column(nullable = false)
     public String getEndTime() {
         return endTime;
@@ -49,7 +38,6 @@ public class Event extends BaseEntity {
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
-
     @Column(nullable = false)
     public String getDescription() {
         return description;

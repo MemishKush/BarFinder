@@ -4,7 +4,6 @@ import com.project.barfinder.domain.entities.Bar;
 
 public class EventServiceModel extends BaseServiceModel {
     private BarServiceModel bar;
-    private String title;
     private String startTime;
     private String endTime;
     private String description;
@@ -18,14 +17,6 @@ public class EventServiceModel extends BaseServiceModel {
 
     public void setBar(BarServiceModel bar) {
         this.bar = bar;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getStartTime() {
