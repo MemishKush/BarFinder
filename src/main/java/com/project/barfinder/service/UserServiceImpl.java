@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
@@ -22,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserServiceModel addUser(UserServiceModel userServiceModel) {
-        return this.modelMapper.map(this.userRepository.save(this.modelMapper.map(userServiceModel,User.class)),UserServiceModel.class);
+        return this.modelMapper.map(this.userRepository.save(this.modelMapper.map(userServiceModel, User.class)), UserServiceModel.class);
     }
 
     @Override
@@ -30,7 +29,7 @@ public class UserServiceImpl implements UserService {
         List<UserServiceModel> serviceModels = new ArrayList<>();
         List<User> usersFromDb = this.userRepository.findAll();
         for (User user : usersFromDb) {
-            UserServiceModel mappedServiceModels = this.modelMapper.map(user,UserServiceModel.class);
+            UserServiceModel mappedServiceModels = this.modelMapper.map(user, UserServiceModel.class);
             serviceModels.add(mappedServiceModels);
         }
         return serviceModels;
@@ -38,27 +37,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserServiceModel findByUsername(String username) {
-        return this.modelMapper.map(userRepository.findByUsername(username),UserServiceModel.class);
+        return this.modelMapper.map(userRepository.findByUsername(username), UserServiceModel.class);
     }
 
     @Override
     public UserServiceModel findById(String id) {
-        return this.modelMapper.map(userRepository.findById(id),UserServiceModel.class);
+        return this.modelMapper.map(userRepository.findById(id), UserServiceModel.class);
     }
 
     @Override
     public UserServiceModel findByEmail(String email) {
-        return this.modelMapper.map(userRepository.findByEmail(email),UserServiceModel.class);
+        return this.modelMapper.map(userRepository.findByEmail(email), UserServiceModel.class);
     }
 
     @Override
     public UserServiceModel editUser(UserServiceModel userServiceModel) {
-        return this.modelMapper.map(userRepository.saveAndFlush(this.modelMapper.map(userServiceModel,User.class)),UserServiceModel.class);
+        return this.modelMapper.map(userRepository.saveAndFlush(this.modelMapper.map(userServiceModel, User.class)), UserServiceModel.class);
     }
 
     @Override
     public void deleteUser(String id) {
-    this.userRepository.deleteById(id);
+        this.userRepository.deleteById(id);
     }
 
     @Override
