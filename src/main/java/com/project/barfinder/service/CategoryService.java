@@ -9,5 +9,5 @@ public interface CategoryService {
     List<CategoryServiceModel> findAllCategories();
     CategoryServiceModel findByName(String name);
     void deleteCategory(String id);
-    CategoryServiceModel editCategory();
+    CategoryServiceModel editCategory(CategoryServiceModel categoryServiceModel);
 }

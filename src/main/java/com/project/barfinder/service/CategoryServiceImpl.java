@@ -45,7 +45,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryServiceModel editCategory() {
-        return null;
+    public CategoryServiceModel editCategory(CategoryServiceModel categoryServiceModel) {
+        return this.modelMapper.map(categoryRepository.saveAndFlush(this.modelMapper.map(categoryServiceModel, Category.class)), CategoryServiceModel.class);
     }
 }

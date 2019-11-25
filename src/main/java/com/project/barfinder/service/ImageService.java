@@ -7,4 +7,5 @@ import java.util.List;
 public interface ImageService {
     ImageServiceModel addImage(ImageServiceModel imageServiceModel);
     List<ImageServiceModel> findAllImages();
+    ImageServiceModel findByUrl(String url);
 }
