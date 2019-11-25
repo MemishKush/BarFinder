@@ -2,7 +2,7 @@ package com.project.barfinder.domain.models.service;
 
 import com.project.barfinder.domain.entities.Bar;
 
-public class ImageServiceModel {
+public class ImageServiceModel extends BaseServiceModel {
     private String url;
     private BarServiceModel bar;
 

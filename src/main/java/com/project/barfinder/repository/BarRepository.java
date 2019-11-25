@@ -13,4 +13,5 @@ public interface BarRepository extends JpaRepository <Bar,String> {
     List<Bar> findByMusicStyle(String musicStyle);
     List<Bar> findByCategory(String categoryName);
 
+
 }

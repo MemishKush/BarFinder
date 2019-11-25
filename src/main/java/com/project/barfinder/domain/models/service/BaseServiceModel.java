@@ -1,6 +1,6 @@
 package com.project.barfinder.domain.models.service;
 
-public class BaseServiceModel {
+public abstract class BaseServiceModel {
     private String id;
 
     protected BaseServiceModel() {
