@@ -1,0 +1,73 @@
+#main-container {
+    background: url("../image.jpg") no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.bg-black {
+    background-color: #000000;
+}
+footer {
+    position:fixed;
+    bottom:0;
+    width: 100%;
+}
+.index-background{
+    background-image: url("../index.jpg");
+    background-position: top;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.register-form {
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+
+label {
+    color: #FFFFFF;
+}
+
+hr.hr-2 {
+    height: 2px;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.w-45 {
+    width: 45%;
+}
+
+.w-55 {
+    width: 55%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-65 {
+    width: 65%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-85 {
+    width: 85%;
+}
+
+.row {
+    width: 100%;
+    margin: auto;
+}
