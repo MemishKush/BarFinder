@@ -1,6 +1,6 @@
 package com.project.barfinder.web.controllers;
 
-import org.springframework.web.servlet.ModelAndView;
+        import org.springframework.web.servlet.ModelAndView;
 
 public abstract class BaseController {
     public ModelAndView view(String viewName, ModelAndView modelAndView){

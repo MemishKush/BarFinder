@@ -1,5 +1,7 @@
 #main-container {
-    background: url("../image.jpg") no-repeat;
+    background-image: url("../img/image.jpg");
+    background-position: center;
+    background-attachment: fixed;
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -14,17 +16,35 @@ footer {
     width: 100%;
 }
 .index-background{
-    background-image: url("../index.jpg");
-    background-position: top;
+     background-image: url("/img/image.jpg");
+     background-position: top;
+     background-attachment: fixed;
+     background-size: cover;
+
+ }
+.home{
+    background-image: url("../img/image.jpg");
+    background-position: center;
     background-attachment: fixed;
     background-size: cover;
 
+}
+.login{
+    background-image: url("../img/image.jpg");
+    background-position: top;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .register-form {
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
+}
+body{
+
+
+    /*background-color: rgba(0,0,0,0.2);*/
 }
 
 label {
