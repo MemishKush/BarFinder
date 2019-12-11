@@ -45,8 +45,8 @@
                 <div class="col-3">
                     <select class="form-control" name="Category">
                         <option selected="selected">Category</option>
-                        <option th:each="category : ${categories}"
-                                th:value="${category.name}" th:text="${category.name}"></option>
+                        <option th:each="musicStyle : ${musicStyles}"
+                                th:value="${music}" th:text="${category.name}"></option>
                     </select>
 
                 </div>

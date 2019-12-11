@@ -1,7 +1,6 @@
 package com.project.barfinder.service;
 
 import com.project.barfinder.domain.entities.Category;
-import com.project.barfinder.domain.models.service.CategoryServiceModel;
 import com.project.barfinder.repository.CategoryRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

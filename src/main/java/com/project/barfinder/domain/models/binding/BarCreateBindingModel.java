@@ -1,6 +1,8 @@
 package com.project.barfinder.domain.models.binding;
 
 import com.project.barfinder.domain.entities.Event;
+import com.project.barfinder.domain.entities.MusicStyle;
+import com.project.barfinder.domain.entities.PriceRange;
 
 import java.util.List;
 
@@ -10,8 +12,8 @@ public class BarCreateBindingModel {
     private String phoneNumber;
     private String photos;
     private String description;
-    private String priceRange;
-    private String musicStyle;
+    private PriceRange priceRange;
+    private MusicStyle musicStyle;
 
     public BarCreateBindingModel() {
     }
@@ -56,19 +58,19 @@ public class BarCreateBindingModel {
         this.description = description;
     }
 
-    public String getPriceRange() {
+    public PriceRange getPriceRange() {
         return priceRange;
     }
 
-    public void setPriceRange(String priceRange) {
+    public void setPriceRange(PriceRange priceRange) {
         this.priceRange = priceRange;
     }
 
-    public String getMusicStyle() {
+    public MusicStyle getMusicStyle() {
         return musicStyle;
     }
 
-    public void setMusicStyle(String musicStyle) {
+    public void setMusicStyle(MusicStyle musicStyle) {
         this.musicStyle = musicStyle;
     }
 }

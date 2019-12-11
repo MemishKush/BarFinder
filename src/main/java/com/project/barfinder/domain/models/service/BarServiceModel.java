@@ -1,6 +1,9 @@
 package com.project.barfinder.domain.models.service;
 
+import com.project.barfinder.domain.entities.Category;
 import com.project.barfinder.domain.entities.Event;
+import com.project.barfinder.domain.entities.MusicStyle;
+import com.project.barfinder.domain.entities.PriceRange;
 
 import java.util.List;
 
@@ -12,12 +15,12 @@ public class BarServiceModel extends BaseServiceModel {
     private String phoneNumber;
     private List<ImageServiceModel> photos;
     private String description;
-    private String priceRange;
-    private String musicStyle;
+    private PriceRange priceRange;
+    private MusicStyle musicStyle;
     private List<Event> events;
     private List<ReservationServiceModel> reservations;
     private List<ReviewServiceModel> reviews;
-    private CategoryServiceModel category;
+    private Category category;
 
     public BarServiceModel() {
     }
@@ -70,19 +73,19 @@ public class BarServiceModel extends BaseServiceModel {
         this.description = description;
     }
 
-    public String getPriceRange() {
+    public PriceRange getPriceRange() {
         return priceRange;
     }
 
-    public void setPriceRange(String priceRange) {
+    public void setPriceRange(PriceRange priceRange) {
         this.priceRange = priceRange;
     }
 
-    public String getMusicStyle() {
+    public MusicStyle getMusicStyle() {
         return musicStyle;
     }
 
-    public void setMusicStyle(String musicStyle) {
+    public void setMusicStyle(MusicStyle musicStyle) {
         this.musicStyle = musicStyle;
     }
 
@@ -110,11 +113,11 @@ public class BarServiceModel extends BaseServiceModel {
         this.reviews = reviews;
     }
 
-    public CategoryServiceModel getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryServiceModel category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }
