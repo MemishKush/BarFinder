@@ -28,6 +28,11 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public EventServiceModel findById(String id) {
+        return this.modelMapper.map(eventRepository.findById(id),EventServiceModel.class);
+    }
+
+    @Override
     public List<EventServiceModel> findAllEvents() {
         List<EventServiceModel> serviceModels = new ArrayList<>();
         List<Event> eventsFromDb = this.eventRepository.findAll();

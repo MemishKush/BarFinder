@@ -13,4 +13,6 @@ public interface EventRepository extends JpaRepository<Event,String> {
     Optional<Event> findByStartTime(String startTime);
     Event findByTitle(String title);
     List<Event> findByStartTime(LocalDateTime startTime) ;
+    Optional<Event> findById(String id);
+
 }

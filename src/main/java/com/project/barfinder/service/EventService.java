@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface EventService {
     EventServiceModel addEvent(EventServiceModel eventServiceModel);
+    EventServiceModel findById(String id);
     List<EventServiceModel> findAllEvents();
     List<EventServiceModel> findByStartTime(LocalDateTime startTime);
     EventServiceModel findByName(String title);
