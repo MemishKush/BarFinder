@@ -12,8 +12,8 @@ public class Bar extends BaseEntity {
     private String phoneNumber;
     private List<Image> photos;
     private String description;
-    private String priceRange;
-    private String musicStyle;
+    private PriceRange priceRange;// Make Enum
+    private MusicStyle musicStyle; // Make Enum
     private List<Event> events;
     private List<Reservation> reservations;
     private List<Review> reviews;
@@ -76,21 +76,21 @@ public class Bar extends BaseEntity {
         this.description = description;
     }
 
-    @Column(name = "price_range")
-    public String getPriceRange() {
+   @Enumerated(EnumType.STRING)
+    public PriceRange getPriceRange() {
         return priceRange;
     }
 
-    public void setPriceRange(String priceRange) {
+    public void setPriceRange(PriceRange priceRange) {
         this.priceRange = priceRange;
     }
 
-    @Column(name = "music_style",nullable = false)
-    public String getMusicStyle() {
+    @Enumerated(EnumType.STRING)
+    public MusicStyle getMusicStyle() {
         return musicStyle;
     }
 
-    public void setMusicStyle(String musicStyle) {
+    public void setMusicStyle(MusicStyle musicStyle) {
         this.musicStyle = musicStyle;
     }
 
@@ -120,7 +120,7 @@ public class Bar extends BaseEntity {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
-    @ManyToOne(cascade = CascadeType.ALL,optional = true, targetEntity = Category.class)
+    @Enumerated(EnumType.STRING)
     public Category getCategory() {
         return category;
     }

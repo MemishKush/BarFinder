@@ -1,22 +1,6 @@
 package com.project.barfinder.domain.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+public enum Category {
+ PUBS,BARS,CLUBS,COCKTAILBARS,BEARBARS,NIGHTCLUBS
 
-@Entity
-@Table(name = "categories")
-public class Category extends BaseEntity {
-    private String name;
-
-    public Category() {
-    }
-    @Column(name = "name", nullable = false)
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
