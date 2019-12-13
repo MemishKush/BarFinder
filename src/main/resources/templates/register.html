@@ -1,62 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"><head>
     <meta charset="UTF-8">
-    <title>Bar Finder</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/reset-css.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
-    <script src="../static/js/jquery-3.4.1.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/popper.min.js"></script>
+   <head>
+       <th:block th:include="~{fragments/head}"></th:block>
+   </head>
 
 
-</head>
 <body>
 <div id="main-container">
     <div class="container-fluid">
         <main class="d-flex justify-content-end">
             <div class="form-holder register-form p-5 mt-5 mr-5 w-45 blur">
                 <h3 class="text-center text-white">Register to Bar Finder</h3>
-                <form>
+                <form th:method="post" th:action="@{/users/register}">
                     <div class="username-email-holder d-flex justify-content-between mt-3">
                         <div class="form-group w-45">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Username...">
+                            <input type="text" name="username" class="form-control" id="username" placeholder="Username...">
                         </div>
                         <div class="form-group w-45">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email...">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Email...">
                         </div>
                     </div>
                     <div class="password-confirm-password-holder d-flex justify-content-between mt-3">
                         <div class="form-group w-45">
                             <label for="password" class="text-dark">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password...">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Password...">
                         </div>
                         <div class="form-group w-45">
                             <label for="confirmPassword">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirmPassword"
+                            <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
                                    placeholder="Confirm Password...">
                         </div>
                     </div>
                     <div class="first-name-last-name-holder d-flex justify-content-between mt-3">
                         <div class="form-group w-45">
                             <label for="first-name">First name</label>
-                            <input type="text" class="form-control" id="first-name" placeholder="First name...">
+                            <input type="text" name="firstName" class="form-control" id="first-name" placeholder="First name...">
                         </div>
                         <div class="form-group w-45">
                             <label for="last-name">Last name</label>
-                            <input type="text" class="form-control" id="last-name" placeholder="Last name...">
+                            <input type="text" name="lastName" class="form-control" id="last-name" placeholder="Last name...">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label for="phone">Phone</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Phone...">
+                        <input type="text" class="form-control" name="phoneNumber" id="phone" placeholder="Phone...">
                     </div>
                     <div class="d-flex justify-content-center mt-5">
                         <button type="submit"
-                                class="btn blur btn-outline-dark rounded text-white font-weight-bold">Register
+                                class="btn bg-dark btn-outline-dark rounded text-white font-weight-bold">Register
                         </button>
                     </div>
                 </form>

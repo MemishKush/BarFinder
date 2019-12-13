@@ -25,37 +25,37 @@ public class UserController extends BaseController {
         this.encoder = encoder;
     }
     @GetMapping("/register")
-    @PreAuthorize("isAnonymous()")
+  //  @PreAuthorize("isAnonymous()")
     public ModelAndView register(){
-        return super.view("user/register");
+        return super.view("register");
     }
     @PostMapping("/register")
-    @PreAuthorize("isAnonymous()")
+   // @PreAuthorize("isAnonymous()")
     public ModelAndView registerConfirm(@ModelAttribute UserRegisterBindingModel model){
         if (!model.getPassword().equals(model.getConfirmPassword())){
-            return super.view("user/register");
+            return super.view("register");
         }
         this.userService.addUser(this.modelMapper.map(model, UserServiceModel.class));
-        return super.redirect("/login");
+        return super.redirect("/");
     }
     @GetMapping("/login")
     @PreAuthorize("isAnonymous()")
     public ModelAndView login(){
-        return super.view("user/login");
+        return super.view("login");
     }
-    @GetMapping("/delete/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ModelAndView deleteUser(@PathVariable String id,ModelAndView modelAndView){
-        UserServiceModel userServiceModel = this.userService.findById(id);
-        modelAndView.addObject("user", userServiceModel);
-        modelAndView.addObject("userId", id);
-        return super.view("user/delete-user",modelAndView);
-    }
-    @PostMapping("delete/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ModelAndView deleteUserConfirm(@PathVariable String id){
-        this.userService.deleteUser(id);
-        return super.redirect("/user/all");
-    }
+//    @GetMapping("/delete/{id}")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    public ModelAndView deleteUser(@PathVariable String id,ModelAndView modelAndView){
+//        UserServiceModel userServiceModel = this.userService.findById(id);
+//        modelAndView.addObject("user", userServiceModel);
+//        modelAndView.addObject("userId", id);
+//        return super.view("user/delete-user",modelAndView);
+//    }
+//    @PostMapping("delete/{id}")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    public ModelAndView deleteUserConfirm(@PathVariable String id){
+//        this.userService.deleteUser(id);
+//        return super.redirect("/user/all");
+//    }
 
 }

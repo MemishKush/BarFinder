@@ -2,7 +2,7 @@ package com.project.barfinder.domain.models.service;
 
 import java.util.List;
 
-public class UserServiceModel extends BarServiceModel {
+public class UserServiceModel extends BaseServiceModel {
     private String username;
     private String password;
     private String email;
@@ -54,12 +54,11 @@ public class UserServiceModel extends BarServiceModel {
         this.lastName = lastName;
     }
 
-    @Override
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    @Override
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }

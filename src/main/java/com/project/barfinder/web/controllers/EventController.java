@@ -69,6 +69,7 @@ public class EventController extends BaseController {
         modelAndView.addObject("event",eventServiceModel);
         modelAndView.addObject("eventId",id);
         return super.view("event/delete-event", modelAndView);
-        
+
     }
+
 }
