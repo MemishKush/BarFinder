@@ -1,5 +1,6 @@
 package com.project.barfinder.service;
 
+import com.project.barfinder.domain.entities.Bar;
 import com.project.barfinder.domain.entities.Event;
 import com.project.barfinder.domain.models.service.EventServiceModel;
 import com.project.barfinder.repository.EventRepository;
@@ -14,17 +15,24 @@ import java.util.List;
 @Service
 public class EventServiceImpl implements EventService {
     private final EventRepository eventRepository;
+    private final BarServiceImpl barService;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public EventServiceImpl(EventRepository eventRepository, ModelMapper modelMapper) {
+    public EventServiceImpl(EventRepository eventRepository, BarServiceImpl barService, ModelMapper modelMapper) {
         this.eventRepository = eventRepository;
+        this.barService = barService;
         this.modelMapper = modelMapper;
     }
 
     @Override
     public EventServiceModel addEvent(EventServiceModel eventServiceModel) {
-        return this.modelMapper.map(this.eventRepository.save(this.modelMapper.map(eventServiceModel, Event.class)), EventServiceModel.class);
+        Event entity = this.modelMapper.map(eventServiceModel, Event.class);
+
+        Bar barEntity = this.barService.getBarByName(entity.getBar().getName());
+        entity.setBar(barEntity);
+
+        return this.modelMapper.map(this.eventRepository.save(entity), EventServiceModel.class);
     }
 
     @Override

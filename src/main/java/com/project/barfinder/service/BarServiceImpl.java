@@ -21,6 +21,10 @@ public class BarServiceImpl implements BarService {
         this.modelMapper = modelMapper;
     }
 
+    Bar getBarByName(String name) {
+        return this.barRepository.findByName(name).orElse(null);
+    }
+
     @Override
     public BarServiceModel addBar(BarServiceModel barServiceModel) {
         return this.modelMapper.map(this.barRepository.saveAndFlush(this.modelMapper.map(barServiceModel, Bar.class)), BarServiceModel.class);

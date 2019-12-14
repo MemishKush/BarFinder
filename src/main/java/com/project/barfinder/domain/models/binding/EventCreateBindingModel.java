@@ -16,7 +16,7 @@ public class EventCreateBindingModel {
         return barName;
     }
 
-    public void setBarBarName(String bar) {
+    public void setBarName(String bar) {
         this.barName = bar;
     }
 
