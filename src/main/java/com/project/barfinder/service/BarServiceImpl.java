@@ -2,6 +2,7 @@ package com.project.barfinder.service;
 
 import com.project.barfinder.domain.entities.Bar;
 import com.project.barfinder.domain.models.service.BarServiceModel;
+import com.project.barfinder.domain.models.service.SearchBarServiceModel;
 import com.project.barfinder.repository.BarRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,23 @@ public class BarServiceImpl implements BarService {
     @Override
     public BarServiceModel editBar(BarServiceModel barServiceModel) {
         return this.modelMapper.map(barRepository.saveAndFlush(this.modelMapper.map(barServiceModel, Bar.class)), BarServiceModel.class);
+    }
+
+    @Override
+    public List<BarServiceModel> findAllBars(SearchBarServiceModel searchBarServiceModel) {
+        List<BarServiceModel> serviceModels = new ArrayList<>();
+        List<Bar> barsFromDb = this.barRepository.findAll();
+        for (Bar bar : barsFromDb) {
+            BarServiceModel mappedServiceModel = this.modelMapper.map(bar, BarServiceModel.class);
+
+            if ((searchBarServiceModel.getCategory() == null) || (mappedServiceModel.getCategory().equals(searchBarServiceModel.getCategory())
+                    && (searchBarServiceModel.getMusicStyle() == null) || (mappedServiceModel.getMusicStyle().equals(searchBarServiceModel.getMusicStyle()))
+                    && (searchBarServiceModel.getPriceRange() == null) || (mappedServiceModel.getPriceRange().equals(searchBarServiceModel.getPriceRange())))) {
+                serviceModels.add(mappedServiceModel);
+            }
+        }
+
+        return serviceModels;
     }
 
     @Override

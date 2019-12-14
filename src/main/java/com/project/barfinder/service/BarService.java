@@ -2,6 +2,7 @@ package com.project.barfinder.service;
 
 
 import com.project.barfinder.domain.models.service.BarServiceModel;
+import com.project.barfinder.domain.models.service.SearchBarServiceModel;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public interface BarService {
     List<BarServiceModel> findByCategory(String category);
     BarServiceModel findByName(String name);
     BarServiceModel editBar(BarServiceModel barServiceModel);
+    List<BarServiceModel> findAllBars(SearchBarServiceModel searchBarServiceModel);
 
     void deleteBar(String id);
 }

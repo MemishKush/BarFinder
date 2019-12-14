@@ -1,7 +1,9 @@
 package com.project.barfinder.web.controllers;
 
         import com.project.barfinder.domain.models.binding.BarCreateBindingModel;
+        import com.project.barfinder.domain.models.binding.SearchBarBindingModel;
         import com.project.barfinder.domain.models.service.BarServiceModel;
+        import com.project.barfinder.domain.models.service.SearchBarServiceModel;
         import com.project.barfinder.domain.models.service.UserServiceModel;
         import com.project.barfinder.domain.models.view.UserViewModel;
         import com.project.barfinder.service.BarService;
@@ -43,13 +45,13 @@ public class BarController extends BaseController{
         return super.redirect("/home");
 
     }
-    @GetMapping("all")
-    @PreAuthorize("isAuthenticated()")
-    public ModelAndView all(ModelAndView modelAndView){
-        List<BarServiceModel> bars = this.barService.findAllBars();
-        modelAndView.addObject("bar",bars);
-        return super.view("bar/all-bars", modelAndView);
-    }
+   // @GetMapping("all")
+   // @PreAuthorize("isAuthenticated()")
+   // public ModelAndView all(ModelAndView modelAndView, SearchBarBindingModel searchBarBindingModel){
+   //     List<BarServiceModel> bars = this.barService.findAllBars(this.modelMapper.map(searchBarBindingModel, SearchBarServiceModel.class));
+   //     modelAndView.addObject("bars", bars);
+   //     return super.view("/home", modelAndView);
+   // }
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView deleteBar(@PathVariable String id, ModelAndView modelAndView){
