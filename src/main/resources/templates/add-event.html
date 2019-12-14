@@ -15,7 +15,7 @@
 <div id="main-container">
     <div class="container-fluid">
         <main class="d-flex justify-content-end">
-            <div class="form-holder register-form p-5 mt-5 mr-5 w-50 blur">
+            <div class="form-holder register-form p-5 mt-5 mr-5 w-50 bg-black">
                 <h3 class="text-center text-white">Add Event</h3>
                 <form th:method="post" th:action="@{/events/create}">
                     <div class="username-email-holder d-flex justify-content-between mt-3">
@@ -40,16 +40,15 @@
                                    placeholder="End Date...">
                         </div>
                     </div>
-                    <div class="first-name-last-name-holder d-flex justify-content-between mt-3">
-                        <div class="form-group w-45">
+
+                        <div class="form-group mt-3">
                             <label for="description">Description</label>
                             <input type="text" name="description" class="form-control" id="description"
                                    placeholder="Description... ">
                         </div>
-                    </div>
                     <div class="d-flex justify-content-center mt-5">
                         <button type="submit"
-                                class="btn bg-dark btn-outline-dark rounded text-white font-weight-bold">Add
+                                class="btn bg-black btn-outline-dark rounded text-white font-weight-bold">Add
                         </button>
                     </div>
                 </form>

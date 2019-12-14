@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation,String> {
     Optional<Reservation> findByBar(Bar bar);
+
 }

@@ -7,5 +7,7 @@ import java.util.List;
 public interface ReservationService {
     ReservationServiceModel addReservation(ReservationServiceModel reservationServiceModel);
     List<ReservationServiceModel> findAllReservations();
+    ReservationServiceModel findById(String id);
+    void deleteReservation(String id);
 
 }

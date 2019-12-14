@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <head>
+        <th:block th:include="~{fragments/head}"></th:block>
+    </head>
+
+
+<body>
+<header>
+    <th:block th:include="~{fragments/common-nav-bar}"></th:block>
+</header>
+<div id="main-container">
+    <div class="container-fluid">
+        <main class="d-flex justify-content-end">
+            <div class="form-holder register-form p-5 mt-5 mr-5 w-50 bg-black">
+                <h3 class="text-center text-white">Add Event</h3>
+                <form th:method="post" th:action="@{/reservations/create}">
+                    <div class="username-email-holder d-flex justify-content-between mt-3">
+                        <div class="form-group w-45">
+                            <label for="date">Date</label>
+                            <input type="text" name="time" class="form-control" id="date" placeholder="Date and Time..">
+                        </div>
+                        <div class="form-group w-45">
+                            <label for="guests">Guest Count</label>
+                            <input type="text" name="guestCount" class="form-control" id="guests"
+                                   placeholder="GuestCount">
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="notes">Additional Notes</label>
+                        <input type="text" name="additionalNotes" class="form-control" id="notes"
+                               placeholder="Additional Notes... ">
+                    </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <button type="submit"
+                                class="btn bg-black btn-outline-dark rounded text-white font-weight-bold">Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer class="footer bg-dark  py-2">
+            <head>
+                <th:block th:include="~{fragments/footer}"></th:block>
+            </head>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

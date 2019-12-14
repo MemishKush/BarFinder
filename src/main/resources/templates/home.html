@@ -45,7 +45,7 @@
                     </button>
                 </div>
             </form>
-            <div class="bars w-100 px-4 bg-dark mt-5">
+            <div class="bars w-100 px-4 bg-black mt-5">
                 <div class="bar py-3 d-flex justify-content-between">
                     <div class="image-data w-15 d-flex justify-content-start">
                         <img class="img-thumbnail" src="https://www.belushis.com/__data/assets/image/0008/501200/Belushis-Bar-Amsterdam-Interior-3.jpg" width="150" height="150" />
@@ -53,11 +53,12 @@
 
                     <div class="bar-data w-85" th:each="bar, iter : ${bars}">
                         <div class="bar-name-and-price-range d-flex justify-content-between">
-                            <h4 class="text-white text-left w-50" th:text="${bar.name}" ></h4>
-                            <h4 class="text-white text-right w-50" th:text="${bar.priceRange}" ></h4>
+                            <h4 class="text-white text-left w-50" th:text="|Name : ${bar.name}|" ></h4>
+                            <h5 class="text-white text-right w-50" th:text="|Music Style : ${bar.musicStyle}|"></h5>
                         </div>
-                        <p class="text-white text-left"th:text="${bar.description}">A very good bar with some of the best DJs and barmans ever. Misho works here.</p>
-                        <h5 class="text-white text-right" th:text="|Music Style :   ${bar.musicStyle}|"></h5>
+                        <p class="text-white text-left"th:text="|Description : ${bar.description}|"></p>
+                        <h5 class="text-white text-right " th:text="|Price range : ${bar.priceRange}|" ></h5>
+
                     </div>
                 </div>
             </div>
@@ -66,12 +67,10 @@
     </div>
 </main>
 <span style="visibility: hidden">...</span>
-<footer class="footer bg-dark  py-2">
-    <div class="container-fluid text-center">
-        <div class="footer-background h5 text-white">
-            & CopyRight Bar Finder. All rights reserved.
-        </div>
-    </div>
+<footer class="footer bg-dark d-flex justify-content-center py-2">
+    <head>
+        <th:block th:include="~{fragments/footer}"></th:block>
+    </head>
 </footer>
 </body>
 </html>

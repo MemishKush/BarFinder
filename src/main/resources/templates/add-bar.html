@@ -15,7 +15,7 @@
 <div id="main-container">
     <div class="container-fluid">
         <main class="d-flex justify-content-end">
-            <div class="form-holder register-form p-5 mt-5 mr-5 w-50 blur">
+            <div class="form-holder register-form p-5 mt-5 mr-5 w-50 bg-black">
                 <h3 class="text-center text-white">Add Bar</h3>
                 <form th:method="post" th:action="@{/bars/create}">
                     <div class="username-email-holder d-flex justify-content-between mt-3">
@@ -40,12 +40,12 @@
                                    placeholder="Phone...">
                         </div>
                     </div>
-                    <div class="first-name-last-name-holder d-flex justify-content-between mt-3">
-                        <div class="form-group w-45">
+
+                        <div class="form-group mt-3">
                             <label for="description">Description</label>
                             <input type="text" name="description" class="form-control" id="description"
                                    placeholder="Description... ">
-                        </div>
+
 
                     </div>
                     <div class="w-100 row d-flex justify-content-between mt-4">
