@@ -5,7 +5,7 @@
 </head>
 <body class= "index-background">
 <header>
-    <th:block th:include="~{fragments/logged-nav-bar}"></th:block>
+    <th:block th:include="~{fragments/common-nav-bar}"></th:block>
 </header>
 <main>
     <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Search for Bars</span></h1>
@@ -15,25 +15,25 @@
             <div class="row d-flex justify-content-between">
                 <div class="col-3">
                     <select class="form-control" name="Category">
-                        <option selected="selected">Category</option>
-                        <option th:each="category : ${categories}"
-                                th:value="${category.name}" th:text="${category.name}"></option>
+                        <option selected="selected" disabled="disabled">Category</option>
+                        <option th:each="category : ${T(com.project.barfinder.domain.entities.Category).values()}"
+                                th:value="${category}" th:text="${category}"></option>
                     </select>
 
                 </div>
                 <div class="col-3">
-                    <select class="form-control" name="Category">
-                        <option selected="selected">Category</option>
-                        <option th:each="musicStyle : ${musicStyles}"
-                                th:value="${music}" th:text="${category.name}"></option>
+                    <select class="form-control" name="MusicStyle">
+                        <option selected="selected" disabled="disabled">Music Style</option>
+                        <option th:each="musicStyle : ${T(com.project.barfinder.domain.entities.MusicStyle).values()}"
+                                th:value="${musicStyle}" th:text="${musicStyle}"></option>
                     </select>
 
                 </div>
                 <div class="col-3">
-                    <select class="form-control" name="Category">
-                        <option selected="selected">Category</option>
-                        <option th:each="category : ${categories}"
-                                th:value="${category.name}" th:text="${category.name}"></option>
+                    <select class="form-control" name="Price Range">
+                        <option selected="selected" disabled="disabled">Price Range</option>
+                        <option th:each="priceRange : ${T(com.project.barfinder.domain.entities.PriceRange).values()}"
+                                th:value="${priceRage}" th:text="${priceRange}"></option>
                     </select>
 
                 </div>

@@ -1,0 +1,16 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="common-nav-bar">
+    <th:block th:if="${#authorization.expression('isAnonymous()')}">
+        <th:block th:replace="fragments/nav-bar"></th:block>
+    </th:block>
+    <th:block th:if="${#authorization.expression('isAuthenticated()') and #authorization.expression('hasAuthority(''USER'')')}">
+        <th:block th:replace="fragments/logged-nav-bar"></th:block>
+    </th:block>
+    <th:block th:if="${#authorization.expression('isAuthenticated()') and #authorization.expression('hasAuthority(''ADMIN'')')}">
+        <th:block th:replace="fragments/admin-nav-bar"></th:block>
+    </th:block>
+    <th:block th:if="${#authorization.expression('isAuthenticated()') and #authorization.expression('hasAuthority(''ROOT'')')}">
+        <th:block th:replace="fragments/admin-nav-bar"></th:block>
+    </th:block>
+</th:block>

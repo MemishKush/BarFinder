@@ -71,17 +71,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserServiceModel findByUsername(String username) {
-        return this.modelMapper.map(userRepository.findByUsername(username), UserServiceModel.class);
+        return this.modelMapper.map(userRepository.findByUsername(username).orElse(null), UserServiceModel.class);
     }
 
     @Override
     public UserServiceModel findById(String id) {
-        return this.modelMapper.map(userRepository.findById(id), UserServiceModel.class);
+        return this.modelMapper.map(userRepository.findById(id).orElse(null), UserServiceModel.class);
     }
 
     @Override
     public UserServiceModel findByEmail(String email) {
-        return this.modelMapper.map(userRepository.findByEmail(email), UserServiceModel.class);
+        return this.modelMapper.map(userRepository.findByEmail(email).orElse(null), UserServiceModel.class);
     }
 
     @Override

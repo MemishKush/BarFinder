@@ -3,7 +3,7 @@ package com.project.barfinder.domain.models.binding;
 import com.project.barfinder.domain.entities.Bar;
 
 public class EventCreateBindingModel {
-    private String bar;
+    private String barName;
     private String title;
     private String startTime;
     private String endTime;
@@ -12,12 +12,12 @@ public class EventCreateBindingModel {
     public EventCreateBindingModel() {
     }
 
-    public String getBar() {
-        return bar;
+    public String getBarName() {
+        return barName;
     }
 
-    public void setBar(String bar) {
-        this.bar = bar;
+    public void setBarBarName(String bar) {
+        this.barName = bar;
     }
 
     public String getTitle() {

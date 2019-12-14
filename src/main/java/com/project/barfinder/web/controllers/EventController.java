@@ -37,10 +37,10 @@ public class EventController extends BaseController {
         modelAndView.addObject("model", this.modelMapper.map(this.userService.findByUsername(principal.getName()),
                 UserViewModel.class));
 
-        return super.view("event/create-event");
+        return super.view("add-event");
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView createConfirm(@ModelAttribute EventCreateBindingModel model) {
         this.eventService.addEvent(this.modelMapper.map(model, EventServiceModel.class));

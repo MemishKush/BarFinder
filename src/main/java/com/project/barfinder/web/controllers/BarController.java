@@ -2,6 +2,7 @@ package com.project.barfinder.web.controllers;
 
         import com.project.barfinder.domain.models.binding.BarCreateBindingModel;
         import com.project.barfinder.domain.models.service.BarServiceModel;
+        import com.project.barfinder.domain.models.service.UserServiceModel;
         import com.project.barfinder.domain.models.view.UserViewModel;
         import com.project.barfinder.service.BarService;
         import com.project.barfinder.service.UserService;
@@ -28,17 +29,18 @@ public class BarController extends BaseController{
         this.barService = barService;
     }
     @GetMapping("/create")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ROOT')")
     public ModelAndView create(Principal principal,ModelAndView modelAndView){
-        modelAndView.addObject("model",this.modelMapper.map(this.userService.findByUsername(principal.getName()), UserViewModel.class));
-        return super.view("bar/create-bar");
+        UserServiceModel userFromDb =this.userService.findByUsername(principal.getName());
+        modelAndView.addObject("model",this.modelMapper.map(userFromDb, UserViewModel.class));
+        return super.view("add-bar");
     }
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ROOT')")
     public ModelAndView addProductConfirm(@ModelAttribute BarCreateBindingModel model){
         BarServiceModel barServiceModel  = this.modelMapper.map(model, BarServiceModel.class);
         this.barService.addBar(barServiceModel);
-        return super.redirect("/bar/all");
+        return super.redirect("/home");
 
     }
     @GetMapping("all")
