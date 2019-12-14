@@ -24,12 +24,12 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Override
-    @ManyToMany(cascade = CascadeType.ALL, targetEntity = UserRole.class)
+    @ManyToMany(cascade = CascadeType.ALL, targetEntity = UserRole.class, fetch = FetchType.EAGER)
     @JoinTable(name="users_roles",
             joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
             inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="id")}
     )
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public List<UserRole> getAuthorities() {
         return this.authorities;
     }
 
@@ -48,7 +48,7 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Override
-    @Column(name = "user_name", nullable = false)
+    @Column(name = "user_name", nullable = false, unique = true)
     public String getUsername() {
         return this.username;
     }
