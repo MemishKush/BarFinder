@@ -4,6 +4,7 @@ import com.project.barfinder.domain.entities.Category;
 import com.project.barfinder.domain.entities.Event;
 import com.project.barfinder.domain.entities.MusicStyle;
 import com.project.barfinder.domain.entities.PriceRange;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class BarCreateBindingModel {
     private String name;
     private String location;
     private String phoneNumber;
-    private String photos;
+    private List<MultipartFile> images;
     private String description;
     private String address;
     private PriceRange priceRange;
@@ -62,12 +63,12 @@ public class BarCreateBindingModel {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getPhotos() {
-        return photos;
+    public List<MultipartFile> getImages() {
+        return images;
     }
 
-    public void setPhotos(String photos) {
-        this.photos = photos;
+    public void setImages(List<MultipartFile> images) {
+        this.images = images;
     }
 
     public String getDescription() {

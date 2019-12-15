@@ -14,10 +14,20 @@
 </header>
 <div id="main-container">
     <div class="container-fluid">
-        <main class="d-flex justify-content-end">
-            <div class="form-holder register-form p-5 mt-5 mr-5 w-50 bg-black">
-                <h3 class="text-center text-white">Add Bar</h3>
-                <form th:method="post" th:action="@{/bars/create}">
+        <main>
+            <form class="d-flex justify-content-around w-100" enctype="multipart/form-data" th:method="post" th:action="@{/bars/create}">
+                <div class="p-5 mt-5 ml-4 w-45 bg-black">
+                    <h3 class="text-center text-white">Add Bar Images</h3>
+                    <div id="images mt-3">
+                        <div class="image-row d-flex justify-content-start">
+                            <div class="image rounded mt-1 ml-5">
+                                <input type="file" class="image-upload" name="images" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="register-form p-5 mt-5 mr-5 w-50 bg-black">
+                    <h3 class="text-center text-white">Add Bar</h3>
                     <div class="username-email-holder d-flex justify-content-between mt-3">
                         <div class="form-group w-45">
                             <label for="name">Name</label>
@@ -41,10 +51,10 @@
                         </div>
                     </div>
 
-                        <div class="form-group mt-3">
-                            <label for="description">Description</label>
-                            <input type="text" name="description" class="form-control" id="description"
-                                   placeholder="Description... ">
+                    <div class="form-group mt-3">
+                        <label for="description">Description</label>
+                        <input type="text" name="description" class="form-control" id="description"
+                               placeholder="Description... ">
 
 
                     </div>
@@ -76,15 +86,77 @@
                                 class="btn bg-dark btn-outline-dark rounded text-white font-weight-bold">Add
                         </button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </main>
-        <footer class="footer bg-dark  py-2">
+        <footer class="footer bg-dark d-flex justify-content-center py-2">
             <head>
                 <th:block th:include="~{fragments/footer}"></th:block>
             </head>
         </footer>
     </div>
 </div>
+<script>
+    // These are template HTMLs for new dynamically added input fields.
+    let newElementHtml =
+        '<div class="image">' +
+        '     <input type="file" class="image-upload" name="images">' +
+        '</div>';
+
+    // The row - container of the input fields and their holders.
+    let newRowHtml = '<div class="image-row d-flex justify-content-start mt-5"></div>';
+
+    // This function loads an image as the background of the parent element (div),
+    // when an image is selected through an input[type="file"] field.
+    function loadImageIntoBackground(element, image) {
+        let file = image;
+        let reader = new FileReader();
+        let parent = $(element).parent();
+
+        reader.onloadend = function () {
+            $(parent).css('background-image', 'url("' + reader.result + '")');
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // This function attaches event to a newly created dynamic input field
+    function attachEvents() {
+        $('.image-upload').change(function () {
+            loadImageIntoBackground(this, this.files[0]);
+
+            $(this).hide();
+
+            let totalImageElements = $($($(this).parent()).parent()).children().length;
+
+            if(totalImageElements === 4) {
+                // If we have more than 4 images already added to this row.
+                // Dynamically create a new row so that the new input fields and
+                // newly selected images go on the new row.
+                // That way the miniature design we are trying to implement will not break horribly.
+                let newRow = $(newRowHtml);
+                newRow.append(newElementHtml);
+                $($($($(this).parent()).parent()).parent()).append(newRow);
+            } else {
+                // Create the new dynamic input field
+                let newInputField = $(newElementHtml);
+
+                // If it is not the first element on the row, add a miniature margin to it
+                if(totalImageElements >= 1) {
+                    newInputField.addClass('ml-5');
+                }
+
+                $($($(this).parent()).parent()).append(newInputField);
+            }
+
+            // Attach the event handlers again to the newly created input field.
+            attachEvents();
+        });
+    }
+
+    attachEvents();
+</script>
 </body>
 </html>

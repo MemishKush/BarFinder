@@ -1,44 +1,44 @@
 package com.project.barfinder.service;
 
+import com.project.barfinder.domain.entities.Bar;
 import com.project.barfinder.domain.entities.Image;
 import com.project.barfinder.domain.models.service.ImageServiceModel;
 import com.project.barfinder.repository.ImageRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
 @Service
 public class ImageServiceImpl implements ImageService {
     private final ImageRepository imageRepository;
+    private final CloudinaryService cloudinaryService;
     private final ModelMapper modelMapper;
+    private final BarService barService;
 
     @Autowired
-    public ImageServiceImpl(ImageRepository imageRepository, ModelMapper modelMapper) {
+    public ImageServiceImpl(ImageRepository imageRepository, CloudinaryService cloudinaryService, ModelMapper modelMapper, BarService barService) {
         this.imageRepository = imageRepository;
+        this.cloudinaryService = cloudinaryService;
         this.modelMapper = modelMapper;
+        this.barService = barService;
     }
 
     @Override
-    public ImageServiceModel addImage(ImageServiceModel imageServiceModel) {
-        return this.modelMapper.map(this.imageRepository.save(this.modelMapper.map(imageServiceModel, Image.class)), ImageServiceModel.class);
-    }
+    public ImageServiceModel addImage(String barId, MultipartFile multipartFile) {
+        Bar barFromDb = ((BarServiceImpl) this.barService).getBarByIdInternal(barId);
 
-    @Override
-    public List<ImageServiceModel> findAllImages() {
-        List<ImageServiceModel> serviceModels = new ArrayList<>();
-        List<Image> imagesFromDb = this.imageRepository.findAll();
-        for (Image image : imagesFromDb) {
-            ImageServiceModel mappedServiceModels = this.modelMapper.map(image, ImageServiceModel.class);
-            serviceModels.add(mappedServiceModels);
+        try {
+            String result = this.cloudinaryService.uploadImage(multipartFile);
+            Image image = new Image();
+            image.setBar(barFromDb);
+            image.setUrl(result);
+            this.imageRepository.save(image);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return serviceModels;
-    }
-
-    @Override
-    public ImageServiceModel findByUrl(String url) {
-        return this.modelMapper.map(imageRepository.findByUrl(url), ImageServiceModel.class);
+        return null;
     }
 }

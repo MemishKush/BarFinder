@@ -22,6 +22,10 @@ public class BarServiceImpl implements BarService {
         this.modelMapper = modelMapper;
     }
 
+    Bar getBarByIdInternal(String id) {
+        return this.barRepository.findById(id).orElse(null);
+    }
+
     Bar getBarByName(String name) {
         return this.barRepository.findByName(name).orElse(null);
     }
