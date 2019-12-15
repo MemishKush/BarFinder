@@ -7,6 +7,7 @@ import com.project.barfinder.domain.models.view.UserViewModel;
 import com.project.barfinder.service.BarService;
 import com.project.barfinder.service.ImageService;
 import com.project.barfinder.service.UserService;
+import org.dom4j.rule.Mode;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -72,6 +73,14 @@ public class BarController extends BaseController {
         this.barService.deleteBar(id);
         return super.redirect("/bars/all");
     }
+    @GetMapping("/details/{id}")
+    public ModelAndView  barDetails(@PathVariable String id, ModelAndView modelAndView){
+        BarServiceModel barServiceModel = this.barService.findById(id);
+        modelAndView.addObject("bar",barServiceModel);
+        return super.view("bar-details", modelAndView);
+
+    }
+
 
 
 }

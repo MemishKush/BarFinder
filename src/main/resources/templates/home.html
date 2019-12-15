@@ -48,7 +48,9 @@
             <div class="bars w-100 px-4 bg-black mt-5">
                 <div class="bar py-3 d-flex justify-content-between" th:each="bar, iter : ${bars}">
                     <div class="image-data w-15 d-flex justify-content-start">
+                        <a th:href="@{/bars/details/{id}(id=${bar.id})}">
                         <img class="img-thumbnail" src="https://www.belushis.com/__data/assets/image/0008/501200/Belushis-Bar-Amsterdam-Interior-3.jpg" width="150" height="150" />
+                        </a>
                     </div>
 
                     <div class="bar-data w-85">
