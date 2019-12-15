@@ -45,13 +45,7 @@ public class BarController extends BaseController{
         return super.redirect("/home");
 
     }
-   // @GetMapping("all")
-   // @PreAuthorize("isAuthenticated()")
-   // public ModelAndView all(ModelAndView modelAndView, SearchBarBindingModel searchBarBindingModel){
-   //     List<BarServiceModel> bars = this.barService.findAllBars(this.modelMapper.map(searchBarBindingModel, SearchBarServiceModel.class));
-   //     modelAndView.addObject("bars", bars);
-   //     return super.view("/home", modelAndView);
-   // }
+
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView deleteBar(@PathVariable String id, ModelAndView modelAndView){
