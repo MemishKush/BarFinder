@@ -1,6 +1,7 @@
 package com.project.barfinder.domain.models.service;
 
 import com.project.barfinder.domain.entities.Bar;
+import com.project.barfinder.domain.entities.EventCategory;
 
 public class EventServiceModel extends BaseServiceModel {
     private BarServiceModel bar;
@@ -8,6 +9,7 @@ public class EventServiceModel extends BaseServiceModel {
     private String startTime;
     private String endTime;
     private String description;
+    private EventCategory eventCategory;
 
     public EventServiceModel()  {
     }

@@ -10,6 +10,7 @@ public class Event extends BaseEntity {
     private String startTime;
     private String endTime;
     private String description;
+    private EventCategory eventCategory;
 
     public Event() {
     }
@@ -57,5 +58,13 @@ public class Event extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public EventCategory getEventCategory() {
+        return eventCategory;
+    }
+
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;
     }
 }

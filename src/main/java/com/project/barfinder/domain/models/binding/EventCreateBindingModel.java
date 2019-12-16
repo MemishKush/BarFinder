@@ -1,6 +1,7 @@
 package com.project.barfinder.domain.models.binding;
 
 import com.project.barfinder.domain.entities.Bar;
+import com.project.barfinder.domain.entities.EventCategory;
 
 public class EventCreateBindingModel {
     private String barName;
@@ -8,6 +9,7 @@ public class EventCreateBindingModel {
     private String startTime;
     private String endTime;
     private String description;
+    private EventCategory eventCategory;
 
     public EventCreateBindingModel() {
     }
@@ -50,5 +52,13 @@ public class EventCreateBindingModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public EventCategory getEventCategory() {
+        return eventCategory;
+    }
+
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;
     }
 }

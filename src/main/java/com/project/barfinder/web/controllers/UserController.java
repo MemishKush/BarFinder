@@ -36,7 +36,7 @@ public class UserController extends BaseController {
             return super.view("register");
         }
         this.userService.addUser(this.modelMapper.map(model, UserServiceModel.class));
-        return super.redirect("/");
+        return super.redirect("/login");
     }
     @GetMapping("/login")
     @PreAuthorize("isAnonymous()")
