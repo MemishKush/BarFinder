@@ -48,7 +48,8 @@ public class BarServiceImpl implements BarService {
 
     @Override
     public BarServiceModel findById(String id) {
-        return this.modelMapper.map(barRepository.findById(id).orElse(null), BarServiceModel.class);
+        Bar bar = barRepository.findById(id).orElse(null);
+        return this.modelMapper.map(bar, BarServiceModel.class);
     }
 
     @Override

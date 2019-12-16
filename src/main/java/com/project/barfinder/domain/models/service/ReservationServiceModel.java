@@ -3,11 +3,13 @@ package com.project.barfinder.domain.models.service;
 import com.project.barfinder.domain.entities.Bar;
 import com.project.barfinder.domain.entities.User;
 
+import java.time.LocalDateTime;
+
 public class ReservationServiceModel extends BaseServiceModel {
     private UserServiceModel user;
     private BarServiceModel bar;
     private Integer guestCount;
-    private String time;
+    private LocalDateTime time;
     private String additionalNotes;
 
     public ReservationServiceModel() {
@@ -37,11 +39,11 @@ public class ReservationServiceModel extends BaseServiceModel {
         this.guestCount = guestCount;
     }
 
-    public String getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 

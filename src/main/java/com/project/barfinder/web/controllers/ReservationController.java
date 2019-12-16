@@ -29,16 +29,15 @@ public class ReservationController extends BaseController{
         this.userService = userService;
         this.barService = barService;
     }
-    @GetMapping("/create")
-    @PreAuthorize("isAnonymous()")
-    public ModelAndView create(Principal principal,ModelAndView modelAndView){
+    @GetMapping("/{id}/create")
+    public ModelAndView create(@PathVariable String id, Principal principal,ModelAndView modelAndView){
         modelAndView.addObject("model",this.modelMapper.map(this.userService.findByUsername(principal.getName()), UserViewModel.class));
-        return super.view("make-reservation");
+        modelAndView.addObject("barId", id);
+        return super.view("make-reservation", modelAndView);
     }
-    @PostMapping("creata")
-    @PreAuthorize("isAnonymous()")
-    public ModelAndView createConfirm(@ModelAttribute ReservationCreateBindingModel model){
-        this.reservationService.addReservation(this.modelMapper.map(model, ReservationServiceModel.class));
+    @PostMapping("/create")
+    public ModelAndView createConfirm(@ModelAttribute ReservationCreateBindingModel model, Principal principal){
+        this.reservationService.addReservation(this.modelMapper.map(model, ReservationServiceModel.class),model.getBar(),principal.getName());
         return super.redirect("/home");
     }
     @GetMapping("deleteId/{id}")

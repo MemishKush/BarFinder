@@ -2,11 +2,15 @@ package com.project.barfinder.domain.models.binding;
 
 import com.project.barfinder.domain.entities.Bar;
 import com.project.barfinder.domain.entities.User;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 public class ReservationCreateBindingModel {
     private String bar;
     private Integer guestCount;
-    private String time;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime time;
     private String additionalNotes;
 
     public ReservationCreateBindingModel() {
@@ -28,11 +32,11 @@ public class ReservationCreateBindingModel {
         this.guestCount = guestCount;
     }
 
-    public String getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 

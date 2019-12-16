@@ -21,7 +21,7 @@
                     <div class="username-email-holder d-flex justify-content-between mt-3">
                         <div class="form-group w-45">
                             <label for="date">Date</label>
-                            <input type="text" name="time" class="form-control" id="date" placeholder="Date and Time..">
+                            <input type="datetime-local" name="time" class="form-control" id="date" placeholder="Date and Time..">
                         </div>
                         <div class="form-group w-45">
                             <label for="guests">Guest Count</label>
@@ -34,6 +34,7 @@
                         <input type="text" name="additionalNotes" class="form-control" id="notes"
                                placeholder="Additional Notes... ">
                     </div>
+                    <input type="hidden" th:value="${barId}" name="bar"/>
                     <div class="d-flex justify-content-center mt-5">
                         <button type="submit"
                                 class="btn bg-black btn-outline-dark rounded text-white font-weight-bold">Make Reservation

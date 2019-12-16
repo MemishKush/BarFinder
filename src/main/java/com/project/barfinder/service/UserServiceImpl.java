@@ -36,7 +36,9 @@ public class UserServiceImpl implements UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userRoleRepository = userRoleRepository;
     }
-
+    User getUserByUsernameInternal(String username) {
+        return this.userRepository.findByUsername(username).orElse(null);
+    }
     private List<UserRole> getRole(String role) {
         List<UserRole> userAuthorities = new ArrayList<>();
 

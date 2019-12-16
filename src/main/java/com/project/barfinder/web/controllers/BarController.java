@@ -2,6 +2,7 @@ package com.project.barfinder.web.controllers;
 
 import com.project.barfinder.domain.models.binding.BarCreateBindingModel;
 import com.project.barfinder.domain.models.service.BarServiceModel;
+import com.project.barfinder.domain.models.service.ImageServiceModel;
 import com.project.barfinder.domain.models.service.UserServiceModel;
 import com.project.barfinder.domain.models.view.UserViewModel;
 import com.project.barfinder.service.BarService;

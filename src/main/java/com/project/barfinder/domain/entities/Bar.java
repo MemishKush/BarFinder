@@ -1,5 +1,7 @@
 package com.project.barfinder.domain.entities;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -58,7 +60,7 @@ public class Bar extends BaseEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    @OneToMany(mappedBy = "bar")
+    @OneToMany(mappedBy = "bar",targetEntity = Image.class )
     public List<Image> getPhotos() {
         return photos;
     }
