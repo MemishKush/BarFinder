@@ -11,6 +11,7 @@ public class Reservation extends BaseEntity {
     private Integer guestCount;
     private LocalDateTime time;
     private String additionalNotes;
+    private boolean isApproved;
 
     public Reservation() {
     }
@@ -58,5 +59,13 @@ public class Reservation extends BaseEntity {
 
     public void setAdditionalNotes(String additionalNotes) {
         this.additionalNotes = additionalNotes;
+    }
+    @Column
+    public boolean isApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
     }
 }

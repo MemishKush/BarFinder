@@ -11,6 +11,7 @@ public class ReservationServiceModel extends BaseServiceModel {
     private Integer guestCount;
     private LocalDateTime time;
     private String additionalNotes;
+    private boolean isApproved;
 
     public ReservationServiceModel() {
     }
@@ -53,5 +54,13 @@ public class ReservationServiceModel extends BaseServiceModel {
 
     public void setAdditionalNotes(String additionalNotes) {
         this.additionalNotes = additionalNotes;
+    }
+
+    public boolean isApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
     }
 }
