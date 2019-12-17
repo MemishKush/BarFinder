@@ -90,7 +90,7 @@ public class BarController extends BaseController {
     public ModelAndView reviewBar(@PathVariable String id, ReviewCreateBindingModel reviewCreateBindingModel, Principal principal) {
         if (reviewCreateBindingModel.getRating() < 0 || reviewCreateBindingModel.getRating() > 6 || reviewCreateBindingModel.getComment() == null
                 && reviewCreateBindingModel.getComment().isEmpty()) {
-            return super.redirect("/bars/details");
+            return super.redirect("/bars/details/" + id);
         }
 
         this.reviewService.addReview(
