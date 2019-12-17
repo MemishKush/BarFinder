@@ -4,19 +4,10 @@ import com.project.barfinder.domain.entities.Bar;
 import com.project.barfinder.domain.entities.User;
 
 public class ReviewCreateBindingModel {
-    private String bar;
     private Integer rating;
     private String comment;
 
     public ReviewCreateBindingModel() {
-    }
-
-    public String getBar() {
-        return bar;
-    }
-
-    public void setBar(String bar) {
-        this.bar = bar;
     }
 
     public Integer getRating() {

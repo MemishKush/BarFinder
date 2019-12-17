@@ -1,14 +1,16 @@
 package com.project.barfinder.web.controllers;
 
+import ch.qos.logback.core.joran.action.IADataForComplexProperty;
 import com.project.barfinder.domain.models.binding.BarCreateBindingModel;
+import com.project.barfinder.domain.models.binding.ReviewCreateBindingModel;
 import com.project.barfinder.domain.models.service.BarServiceModel;
-import com.project.barfinder.domain.models.service.ImageServiceModel;
+import com.project.barfinder.domain.models.service.ReviewServiceModel;
 import com.project.barfinder.domain.models.service.UserServiceModel;
 import com.project.barfinder.domain.models.view.UserViewModel;
 import com.project.barfinder.service.BarService;
 import com.project.barfinder.service.ImageService;
+import com.project.barfinder.service.ReviewService;
 import com.project.barfinder.service.UserService;
-import org.dom4j.rule.Mode;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,13 +27,15 @@ public class BarController extends BaseController {
     private final ModelMapper modelMapper;
     private final UserService userService;
     private final BarService barService;
+    private final ReviewService reviewService;
     private final ImageService imageService;
 
     @Autowired
-    public BarController(ModelMapper modelMapper, UserService userService, BarService barService, ImageService imageService) {
+    public BarController(ModelMapper modelMapper, UserService userService, BarService barService, ReviewService reviewService, ImageService imageService) {
         this.modelMapper = modelMapper;
         this.userService = userService;
         this.barService = barService;
+        this.reviewService = reviewService;
         this.imageService = imageService;
     }
 
@@ -75,11 +79,27 @@ public class BarController extends BaseController {
         return super.redirect("/bars/all");
     }
     @GetMapping("/details/{id}")
-    public ModelAndView  barDetails(@PathVariable String id, ModelAndView modelAndView){
+    public ModelAndView barDetails(@PathVariable String id, ModelAndView modelAndView){
         BarServiceModel barServiceModel = this.barService.findById(id);
         modelAndView.addObject("bar",barServiceModel);
         return super.view("bar-details", modelAndView);
 
+    }
+
+    @PostMapping("/review/{id}")
+    public ModelAndView reviewBar(@PathVariable String id, ReviewCreateBindingModel reviewCreateBindingModel, Principal principal) {
+        if (reviewCreateBindingModel.getRating() < 0 || reviewCreateBindingModel.getRating() > 6 || reviewCreateBindingModel.getComment() == null
+                && reviewCreateBindingModel.getComment().isEmpty()) {
+            return super.redirect("/bars/details");
+        }
+
+        this.reviewService.addReview(
+                this.modelMapper.map(reviewCreateBindingModel, ReviewServiceModel.class),
+                id,
+                principal.getName()
+        );
+
+        return super.redirect("/bars/details/" + id);
     }
 
 
