@@ -1,16 +1,16 @@
 package com.project.barfinder.domain.entities;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "events")
 public class Event extends BaseEntity {
     private Bar bar;
     private String title;
-    private String startTime;
-    private String endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private String description;
-    private EventCategory eventCategory;
 
     public Event() {
     }
@@ -32,22 +32,20 @@ public class Event extends BaseEntity {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    @Column(nullable = false)
-    public String getStartTime() {
+@Column(name = "start_time", nullable = false)
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
-
-    @Column(nullable = false)
-    public String getEndTime() {
+    @Column(name = "end_time",nullable = false)
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
@@ -60,11 +58,4 @@ public class Event extends BaseEntity {
         this.description = description;
     }
 
-    public EventCategory getEventCategory() {
-        return eventCategory;
-    }
-
-    public void setEventCategory(EventCategory eventCategory) {
-        this.eventCategory = eventCategory;
-    }
-}
+  }

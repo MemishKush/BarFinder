@@ -43,19 +43,6 @@ public class UserController extends BaseController {
     public ModelAndView login(){
         return super.view("login");
     }
-//    @GetMapping("/delete/{id}")
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
-//    public ModelAndView deleteUser(@PathVariable String id,ModelAndView modelAndView){
-//        UserServiceModel userServiceModel = this.userService.findById(id);
-//        modelAndView.addObject("user", userServiceModel);
-//        modelAndView.addObject("userId", id);
-//        return super.view("user/delete-user",modelAndView);
-//    }
-//    @PostMapping("delete/{id}")
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
-//    public ModelAndView deleteUserConfirm(@PathVariable String id){
-//        this.userService.deleteUser(id);
-//        return super.redirect("/user/all");
-//    }
+
 
 }

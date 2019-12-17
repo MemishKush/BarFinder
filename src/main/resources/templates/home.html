@@ -15,7 +15,7 @@
             <form th:action="@{/home}" th:method="get">
                 <div class="row d-flex justify-content-between">
                     <div class="col-3">
-                        <select class="form-control" name="Category">
+                        <select class="form-control" name="category">
                             <option selected="selected" disabled="disabled">Category</option>
                             <option th:each="category : ${T(com.project.barfinder.domain.entities.Category).values()}"
                                     th:value="${category}" th:text="${category}"></option>
@@ -23,7 +23,7 @@
 
                     </div>
                     <div class="col-3">
-                        <select class="form-control" name="MusicStyle">
+                        <select class="form-control" name="musicStyle">
                             <option selected="selected" disabled="disabled">Music Style</option>
                             <option th:each="musicStyle : ${T(com.project.barfinder.domain.entities.MusicStyle).values()}"
                                     th:value="${musicStyle}" th:text="${musicStyle}"></option>
@@ -31,7 +31,7 @@
 
                     </div>
                     <div class="col-3">
-                        <select class="form-control" name="Price Range">
+                        <select class="form-control" name="priceRange">
                             <option selected="selected" disabled="disabled">Price Range</option>
                             <option th:each="priceRange : ${T(com.project.barfinder.domain.entities.PriceRange).values()}"
                                     th:value="${priceRange}" th:text="${priceRange}"></option>
@@ -49,7 +49,7 @@
                 <div class="bar py-3 d-flex justify-content-between" th:each="bar, iter : ${bars}">
                     <div class="image-data w-15 d-flex justify-content-start">
                         <a th:href="@{/bars/details/{id}(id=${bar.id})}">
-                        <img class="img-thumbnail" src="img/image.jpg" width="150" height="150" />
+                        <img class="img-thumbnail" th:src="${bar.thumbnail.url}" width="150" height="150" />
                         </a>
                     </div>
 

@@ -91,9 +91,9 @@ public class BarServiceImpl implements BarService {
         for (Bar bar : barsFromDb) {
             BarServiceModel mappedServiceModel = this.modelMapper.map(bar, BarServiceModel.class);
 
-            if ((searchBarServiceModel.getCategory() == null) || (mappedServiceModel.getCategory().equals(searchBarServiceModel.getCategory())
-                    && (searchBarServiceModel.getMusicStyle() == null) || (mappedServiceModel.getMusicStyle().equals(searchBarServiceModel.getMusicStyle()))
-                    && (searchBarServiceModel.getPriceRange() == null) || (mappedServiceModel.getPriceRange().equals(searchBarServiceModel.getPriceRange())))) {
+            if (((searchBarServiceModel.getCategory() == null) || (mappedServiceModel.getCategory().equals(searchBarServiceModel.getCategory())))
+                    && ((searchBarServiceModel.getMusicStyle() == null) || (mappedServiceModel.getMusicStyle().equals(searchBarServiceModel.getMusicStyle())))
+                    && ((searchBarServiceModel.getPriceRange() == null) || (mappedServiceModel.getPriceRange().equals(searchBarServiceModel.getPriceRange())))) {
                 serviceModels.add(mappedServiceModel);
             }
         }

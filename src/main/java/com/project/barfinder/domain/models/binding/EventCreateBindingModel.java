@@ -2,14 +2,19 @@ package com.project.barfinder.domain.models.binding;
 
 import com.project.barfinder.domain.entities.Bar;
 import com.project.barfinder.domain.entities.EventCategory;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 public class EventCreateBindingModel {
     private String barName;
     private String title;
-    private String startTime;
-    private String endTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime startTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime endTime;
     private String description;
-    private EventCategory eventCategory;
+
 
     public EventCreateBindingModel() {
     }
@@ -30,19 +35,19 @@ public class EventCreateBindingModel {
         this.title = title;
     }
 
-    public String getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
@@ -54,11 +59,5 @@ public class EventCreateBindingModel {
         this.description = description;
     }
 
-    public EventCategory getEventCategory() {
-        return eventCategory;
-    }
 
-    public void setEventCategory(EventCategory eventCategory) {
-        this.eventCategory = eventCategory;
-    }
 }

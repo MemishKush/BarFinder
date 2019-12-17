@@ -17,6 +17,9 @@
     position: relative;
 }
 
+.bar {
+    border-bottom: 2px solid white;
+}
 
 .image-upload {
     z-index: 99;
