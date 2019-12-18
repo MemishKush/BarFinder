@@ -39,7 +39,7 @@
 }
 
 .bg-black {
-    background-color: #0008;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 footer {
     position:fixed;

@@ -6,6 +6,7 @@ import com.project.barfinder.domain.models.binding.ReviewCreateBindingModel;
 import com.project.barfinder.domain.models.service.BarServiceModel;
 import com.project.barfinder.domain.models.service.ReviewServiceModel;
 import com.project.barfinder.domain.models.service.UserServiceModel;
+import com.project.barfinder.domain.models.view.ReviewViewModel;
 import com.project.barfinder.domain.models.view.UserViewModel;
 import com.project.barfinder.service.BarService;
 import com.project.barfinder.service.ImageService;
@@ -13,6 +14,7 @@ import com.project.barfinder.service.ReviewService;
 import com.project.barfinder.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -86,22 +88,21 @@ public class BarController extends BaseController {
 
     }
 
-    @PostMapping("/review/{id}")
-    public ModelAndView reviewBar(@PathVariable String id, ReviewCreateBindingModel reviewCreateBindingModel, Principal principal) {
+    @PostMapping(value = "/review/{id}", produces = "application/json")
+    public ResponseEntity<ReviewViewModel> reviewBar(@PathVariable String id, @RequestBody ReviewCreateBindingModel reviewCreateBindingModel, Principal principal) {
+        ReviewServiceModel reviewServiceModel = this.modelMapper.map(reviewCreateBindingModel, ReviewServiceModel.class);
+
         if (reviewCreateBindingModel.getRating() < 0 || reviewCreateBindingModel.getRating() > 6 || reviewCreateBindingModel.getComment() == null
                 && reviewCreateBindingModel.getComment().isEmpty()) {
-            return super.redirect("/bars/details/" + id);
+            throw new IllegalArgumentException("Invalid Review Comment or Rating!");
         }
 
-        this.reviewService.addReview(
-                this.modelMapper.map(reviewCreateBindingModel, ReviewServiceModel.class),
+        reviewServiceModel = this.reviewService.addReview(
+                reviewServiceModel,
                 id,
                 principal.getName()
         );
 
-        return super.redirect("/bars/details/" + id);
+        return ResponseEntity.status(200).body(this.modelMapper.map(reviewServiceModel, ReviewViewModel.class));
     }
-
-
-
 }

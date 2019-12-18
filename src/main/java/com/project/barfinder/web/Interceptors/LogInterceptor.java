@@ -20,17 +20,19 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler)
             throws Exception {
-        if (SecurityContextHolder.getContext().getAuthentication().isAuthenticated()){
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-            long startTime = System.currentTimeMillis();
-            request.setAttribute("startTime", startTime);
-            LocalDateTime dateTime = LocalDateTime.now();
-            String currentTime = dtf.format(dateTime);
-            String user = SecurityContextHolder.getContext().getAuthentication().getName();
-            String url = request.getRequestURI();
-            String method = request.getMethod();
-            String asd =  String.format("[%s] %s - performed %s request on URL: %s\r\n",currentTime,user,method,url);
-            Files.write(Paths.get("log.txt"), asd.getBytes(), StandardOpenOption.APPEND);
+        if(SecurityContextHolder.getContext().getAuthentication() != null) {
+            if (SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                long startTime = System.currentTimeMillis();
+                request.setAttribute("startTime", startTime);
+                LocalDateTime dateTime = LocalDateTime.now();
+                String currentTime = dtf.format(dateTime);
+                String user = SecurityContextHolder.getContext().getAuthentication().getName();
+                String url = request.getRequestURI();
+                String method = request.getMethod();
+                String asd = String.format("[%s] %s - performed %s request on URL: %s\r\n", currentTime, user, method, url);
+                Files.write(Paths.get("log.txt"), asd.getBytes(), StandardOpenOption.APPEND);
+            }
         }
         return true;
 

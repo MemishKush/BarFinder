@@ -1,8 +1,5 @@
 package com.project.barfinder.domain.models.service;
 
-import com.project.barfinder.domain.entities.Bar;
-import com.project.barfinder.domain.entities.EventCategory;
-
 import java.time.LocalDateTime;
 
 public class EventServiceModel extends BaseServiceModel {
@@ -47,7 +44,6 @@ public class EventServiceModel extends BaseServiceModel {
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
-
 
     public String getDescription() {
         return description;

@@ -3,6 +3,7 @@ package com.project.barfinder.domain.entities;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,8 +15,8 @@ public class Bar extends BaseEntity {
     private String phoneNumber;
     private List<Image> photos;
     private String description;
-    private PriceRange priceRange;// Make Enum
-    private MusicStyle musicStyle; // Make Enum
+    private PriceRange priceRange;
+    private MusicStyle musicStyle;
     private List<Event> events;
     private List<Reservation> reservations;
     private List<Review> reviews;
@@ -60,14 +61,6 @@ public class Bar extends BaseEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    @OneToMany(mappedBy = "bar",targetEntity = Image.class )
-    public List<Image> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List<Image> photos) {
-        this.photos = photos;
-    }
 
     @Column(name = "description",nullable = false)
     public String getDescription() {
@@ -78,7 +71,7 @@ public class Bar extends BaseEntity {
         this.description = description;
     }
 
-   @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     public PriceRange getPriceRange() {
         return priceRange;
     }
@@ -96,7 +89,16 @@ public class Bar extends BaseEntity {
         this.musicStyle = musicStyle;
     }
 
-    @OneToMany(mappedBy = "bar")
+    @OneToMany(mappedBy = "bar",targetEntity = Image.class)
+    public List<Image> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Image> photos) {
+        this.photos = photos;
+    }
+
+    @OneToMany(mappedBy = "bar", targetEntity = Event.class)
     public List<Event> getEvents() {
         return events;
     }
@@ -105,7 +107,7 @@ public class Bar extends BaseEntity {
         this.events = events;
     }
 
-    @OneToMany(mappedBy = "bar")
+    @OneToMany(mappedBy = "bar", targetEntity = Reservation.class)
     public List<Reservation> getReservations() {
         return reservations;
     }
@@ -114,7 +116,7 @@ public class Bar extends BaseEntity {
         this.reservations = reservations;
     }
 
-    @OneToMany(mappedBy = "bar")
+    @OneToMany(mappedBy = "bar", targetEntity = Review.class)
     public List<Review> getReviews() {
         return reviews;
     }

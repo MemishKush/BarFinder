@@ -14,5 +14,6 @@ public interface EventService {
     EventServiceModel findByName(String title);
     EventServiceModel editEvent(EventServiceModel eventServiceModel);
     void deleteEvent(String id);
+    void deleteExpiredEvents();
 
 }

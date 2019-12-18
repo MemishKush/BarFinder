@@ -37,7 +37,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public EventServiceModel findById(String id) {
-        return this.modelMapper.map(eventRepository.findById(id),EventServiceModel.class);
+        return this.modelMapper.map(eventRepository.findById(id), EventServiceModel.class);
     }
 
     @Override
@@ -75,6 +75,17 @@ public class EventServiceImpl implements EventService {
     @Override
     public void deleteEvent(String id) {
         this.eventRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteExpiredEvents() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        for (Event event : this.eventRepository.findAll()) {
+            if (event.getEndTime().isAfter(localDateTime)) {
+                this.deleteEvent(event.getId());
+            }
+        }
     }
 
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"><head>
+    <head>
+        <th:block th:include="~{fragments/head}"></th:block>
+    </head>
+<body class= "index-background">
+<header>
+    <th:block th:include="~{fragments/common-nav-bar}"></th:block>
+</header>
+<main>
+    <div class="container-fluid index-background text-white">
+        <div class="mt-5 w-50 mx-auto bg-black p-5 register-form">
+            <h1 class="text-center text-danger" th:text="|Error Code: ${status}|"></h1>
+            <h1 class="text-center text-danger" th:text="|Error Status: ${error}|"></h1>
+            <h2 class="text-center text-danger mt-5" th:text="|Error Message: ${message}|"></h2>
+        </div>
+    </div>
+</main>
+<footer class="footer bg-dark d-flex justify-content-center py-2">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+</body>
+</html>

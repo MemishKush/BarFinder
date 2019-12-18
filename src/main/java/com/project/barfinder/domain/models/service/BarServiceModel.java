@@ -5,6 +5,7 @@ import com.project.barfinder.domain.entities.Event;
 import com.project.barfinder.domain.entities.MusicStyle;
 import com.project.barfinder.domain.entities.PriceRange;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BarServiceModel extends BaseServiceModel {
@@ -17,7 +18,7 @@ public class BarServiceModel extends BaseServiceModel {
     private String description;
     private PriceRange priceRange;
     private MusicStyle musicStyle;
-    private List<Event> events;
+    private List<EventServiceModel> events;
     private List<ReservationServiceModel> reservations;
     private List<ReviewServiceModel> reviews;
     private Category category;
@@ -89,11 +90,11 @@ public class BarServiceModel extends BaseServiceModel {
         this.musicStyle = musicStyle;
     }
 
-    public List<Event> getEvents() {
+    public List<EventServiceModel> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public void setEvents(List<EventServiceModel> events) {
         this.events = events;
     }
 

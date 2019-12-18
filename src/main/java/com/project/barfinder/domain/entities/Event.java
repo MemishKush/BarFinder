@@ -15,7 +15,7 @@ public class Event extends BaseEntity {
     public Event() {
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Bar.class)
+    @ManyToOne(targetEntity = Bar.class)
     public Bar getBar() {
         return bar;
     }
@@ -32,7 +32,8 @@ public class Event extends BaseEntity {
     public void setTitle(String title) {
         this.title = title;
     }
-@Column(name = "start_time", nullable = false)
+
+    @Column(name = "start_time", nullable = false)
     public LocalDateTime getStartTime() {
         return startTime;
     }
@@ -40,6 +41,7 @@ public class Event extends BaseEntity {
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
+
     @Column(name = "end_time",nullable = false)
     public LocalDateTime getEndTime() {
         return endTime;

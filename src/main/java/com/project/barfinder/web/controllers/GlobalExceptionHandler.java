@@ -7,9 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler({Throwable.class})
-    public ResponseEntity handleException(Throwable e){
-        String bodyOfResponse = e.getMessage();
-        return ResponseEntity.status(500).body(bodyOfResponse);
-    }
+//    @ExceptionHandler({Throwable.class})
+//    public ResponseEntity handleException(Throwable e){
+//        String bodyOfResponse = e.getMessage();
+//        return ResponseEntity.status(500).body(bodyOfResponse);
+//    }
 }
